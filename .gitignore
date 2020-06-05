@@ -1,0 +1,12 @@
+.idea
+.DS_Store
+*.iml
+database/.yoyo-migrate
+*.swp
+schema.sql
+main
+entry/entry
+vendor/*/
+.med
+.kube/
+dump.rdb
