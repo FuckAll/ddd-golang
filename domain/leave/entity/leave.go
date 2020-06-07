@@ -33,22 +33,19 @@ func (l *Leave) AddHistoryApprovalInfo(approvalInfo ApprovalInfo) {
 	l.HistoryApprovalInfos = append(l.HistoryApprovalInfos, approvalInfo)
 }
 
-func (l *Leave) Create() *Leave {
+func (l *Leave) Create() {
 	l.Status = APPROVING
 	l.StartTime = time.Now()
-	return l
 }
 
-func (l *Leave) Agree(nextApprover approver.Approver) *Leave {
+func (l *Leave) Agree(nextApprover approver.Approver) {
 	l.Status = APPROVING
 	l.Approver = nextApprover
-	return l
 }
 
-func (l *Leave) Reject(approver approver.Approver) *Leave {
+func (l *Leave) Reject(approver approver.Approver) {
 	l.Approver = approver
 	l.Status = REJECTED
-	return l
 }
 
 func (l *Leave) Finish() *Leave {

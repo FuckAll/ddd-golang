@@ -5,13 +5,13 @@ import (
 )
 
 type ILeaveRepository interface {
-	Save(LeavePO po.LeavePO)
+	Save(LeavePO *po.LeavePO) error
 	//
-	SaveEvent(leaveEventPO po.LeaveEventPO)
+	SaveEvent(leaveEventPO *po.LeaveEventPO) error
 	//
-	findById(id string) po.LeavePO
+	FindById(id string) (*po.LeavePO, error)
 	//
-	queryByApplicantId(applicantId string) []po.LeavePO
+	QueryByApplicantId(applicantId string) ([]*po.LeavePO, error)
 	//
-	queryByApproverId(approverId string) []po.LeavePO
+	QueryByApproverId(approverId string) ([]*po.LeavePO, error)
 }

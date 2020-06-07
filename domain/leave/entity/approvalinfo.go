@@ -3,9 +3,9 @@ package entity
 import "github.com/FuckAll/ddd-golang/domain/leave/entity/approver"
 
 type ApprovalInfo struct {
-	approvalInfoId string
-	approver       approver.Approver
-	approvalType   approver.ApprovalType
-	msg            string
-	time           float64
+	ApprovalInfoId string
+	Approver       approver.Approver
+	ApprovalType   approver.ApprovalType
+	Msg            string
+	Time           int64
 }

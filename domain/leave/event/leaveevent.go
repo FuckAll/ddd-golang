@@ -14,8 +14,8 @@ type LeaveEvent struct {
 	data           string
 }
 
-func NewLeaveEvent(leaveEventType LeaveEventType, leave entity.Leave) LeaveEvent {
+func NewLeaveEvent(leaveEventType LeaveEventType, leave *entity.Leave) *LeaveEvent {
 	bytes, _ := json.Marshal(leave)
 	// id 是生成的
-	return LeaveEvent{leaveEventType: leaveEventType, id: "1", timestamp: time.Now(), data: string(bytes)}
+	return &LeaveEvent{leaveEventType: leaveEventType, id: "1", timestamp: time.Now(), data: string(bytes)}
 }

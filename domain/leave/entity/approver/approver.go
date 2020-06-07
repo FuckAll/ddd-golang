@@ -1,11 +1,11 @@
 package approver
 
 type Approver struct {
-	personId   string
-	personName string
-	level      int
+	PersonId   string
+	PersonName string
+	Level      int
 }
 
 func NewApprover(personId string, personName string, level int) *Approver {
-	return &Approver{personId: personId, personName: personName, level: level}
+	return &Approver{PersonId: personId, PersonName: personName, Level: level}
 }
