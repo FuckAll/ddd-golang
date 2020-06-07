@@ -1,11 +1,11 @@
 package service
 
 import (
+	"github.com/FuckAll/ddd-golang/domain/leave/entity"
+	"github.com/FuckAll/ddd-golang/domain/leave/entity/approver"
+	event2 "github.com/FuckAll/ddd-golang/domain/leave/event"
+	"github.com/FuckAll/ddd-golang/domain/leave/repository/facade"
 	"github.com/FuckAll/ddd-golang/infrastructure/common/event"
-	"github.com/FuckAll/ddd-golang/leave/entity"
-	"github.com/FuckAll/ddd-golang/leave/entity/approver"
-	event2 "github.com/FuckAll/ddd-golang/leave/event"
-	"github.com/FuckAll/ddd-golang/leave/repository/facade"
 )
 
 type LeaveDomainService struct {
@@ -14,7 +14,7 @@ type LeaveDomainService struct {
 	leaveFactory             LeaveFactory
 }
 
-func (l *LeaveDomainService) CreateLeave(leave entity.Leave, leaderMaxLevel int, approver approver.Approver) {
+func (l *LeaveDomainService) CreateLeave(leave entity.Leave, leaderMaxLevel int, approver *approver.Approver) {
 	leave.LeaderMaxLevel = leaderMaxLevel
 	leave.Approver = approver
 	leave = *leave.Create()

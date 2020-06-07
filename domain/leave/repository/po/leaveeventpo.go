@@ -1,7 +1,7 @@
 package po
 
 import (
-	"github.com/FuckAll/ddd-golang/leave/event"
+	"github.com/FuckAll/ddd-golang/domain/leave/event"
 	"time"
 )
 

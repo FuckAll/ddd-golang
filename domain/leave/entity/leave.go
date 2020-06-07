@@ -1,8 +1,9 @@
 package entity
 
 import (
-	"github.com/FuckAll/ddd-golang/leave/entity/applicant"
-	"github.com/FuckAll/ddd-golang/leave/entity/approver"
+	"github.com/FuckAll/ddd-golang/domain/leave/entity/applicant"
+	"github.com/FuckAll/ddd-golang/domain/leave/entity/approver"
+	"github.com/FuckAll/ddd-golang/domain/shared"
 	"time"
 )
 
@@ -13,7 +14,7 @@ type Leave struct {
 	Id        string
 	Applicant applicant.Applicant
 	Approver  approver.Approver
-	LeaveType LeaveType
+	LeaveType shared.LeaveType
 	Status    Status
 	StartTime time.Time
 	EndTime   time.Time

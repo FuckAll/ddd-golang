@@ -1,4 +1,4 @@
-package entity
+package shared
 
 type LeaveType int
 

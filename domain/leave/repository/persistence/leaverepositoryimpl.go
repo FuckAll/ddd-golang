@@ -1,7 +1,7 @@
 package persistence
 
 import (
-	"github.com/FuckAll/ddd-golang/leave/repository/po"
+	"github.com/FuckAll/ddd-golang/domain/leave/repository/po"
 )
 
 type LeaveRepositoryImpl struct {

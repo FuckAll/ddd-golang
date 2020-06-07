@@ -1,6 +1,6 @@
 package entity
 
-import "github.com/FuckAll/ddd-golang/leave/entity/approver"
+import "github.com/FuckAll/ddd-golang/domain/leave/entity/approver"
 
 type ApprovalInfo struct {
 	approvalInfoId string

@@ -1,6 +1,6 @@
 package event
 
-import "github.com/FuckAll/ddd-golang/leave/event"
+import "github.com/FuckAll/ddd-golang/domain/leave/event"
 
 type EventPublisher struct {
 }

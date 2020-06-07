@@ -1,4 +1,4 @@
-package valueobject
+package shared
 
 type PersonType int
 

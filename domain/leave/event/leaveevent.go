@@ -2,7 +2,7 @@ package event
 
 import (
 	"encoding/json"
-	"github.com/FuckAll/ddd-golang/leave/entity"
+	"github.com/FuckAll/ddd-golang/domain/leave/entity"
 	"time"
 )
 

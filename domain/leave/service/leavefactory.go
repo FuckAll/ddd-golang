@@ -1,9 +1,9 @@
 package service
 
 import (
-	"github.com/FuckAll/ddd-golang/leave/entity"
-	"github.com/FuckAll/ddd-golang/leave/event"
-	"github.com/FuckAll/ddd-golang/leave/repository/po"
+	"github.com/FuckAll/ddd-golang/domain/leave/entity"
+	"github.com/FuckAll/ddd-golang/domain/leave/event"
+	"github.com/FuckAll/ddd-golang/domain/leave/repository/po"
 )
 
 type LeaveFactory struct {
