@@ -12,7 +12,14 @@ type PersonDomainService struct {
 	personRepository facade.PersonRepository
 
 	// 依赖注入
-	personFactory PersonFactory
+	personFactory *PersonFactory
+}
+
+func NewPersonDomainService(personRepository facade.PersonRepository, personFactory *PersonFactory) *PersonDomainService {
+	return &PersonDomainService{
+		personRepository: personRepository,
+		personFactory:    personFactory,
+	}
 }
 
 func (p *PersonDomainService) Create(person *entity.Person) error {

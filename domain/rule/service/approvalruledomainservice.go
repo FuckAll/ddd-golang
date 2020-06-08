@@ -10,6 +10,10 @@ type ApprovalRuleDomainService struct {
 	approvalRuleRepository facade.ApprovalRuleRepository
 }
 
+func NewApprovalRuleDomainService(approvalRuleRepository facade.ApprovalRuleRepository) *ApprovalRuleDomainService {
+	return &ApprovalRuleDomainService{approvalRuleRepository: approvalRuleRepository}
+}
+
 func (a *ApprovalRuleDomainService) GetLeaderMaxLevel(personType shared.PersonType, levelType shared.LeaveType, duration int64) (int, error) {
 	rule := &entity.ApprovalRule{
 		PersonType: personType,

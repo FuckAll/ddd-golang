@@ -12,6 +12,10 @@ type PersonFactory struct {
 	personRepository facade.PersonRepository
 }
 
+func NewPersonFactory(personRepository facade.PersonRepository) *PersonFactory {
+	return &PersonFactory{personRepository: personRepository}
+}
+
 func (p *PersonFactory) getPerson(personPO *po.PersonPO) (*entity.Person, error) {
 	person, err := p.personRepository.FindById(personPO.PersonId)
 	if err != nil {

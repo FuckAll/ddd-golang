@@ -9,6 +9,10 @@ import (
 type LeaveFactory struct {
 }
 
+func NewLeaveFactory() *LeaveFactory {
+	return &LeaveFactory{}
+}
+
 func (l *LeaveFactory) CreateLeavePO(leave *entity.Leave) *po.LeavePO {
 	return &po.LeavePO{}
 }

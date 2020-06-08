@@ -9,9 +9,19 @@ import (
 )
 
 type LeaveDomainService struct {
-	eventPublisher           event.EventPublisher
+	eventPublisher           *event.EventPublisher
 	leaveRepositoryInterface facade.ILeaveRepository
-	leaveFactory             LeaveFactory
+	leaveFactory             *LeaveFactory
+}
+
+func NewLeaveDomainService(eventPublisher *event.EventPublisher,
+	leaveRepositoryInterface facade.ILeaveRepository,
+	leaveFactory *LeaveFactory) *LeaveDomainService {
+	return &LeaveDomainService{
+		eventPublisher:           eventPublisher,
+		leaveRepositoryInterface: leaveRepositoryInterface,
+		leaveFactory:             leaveFactory,
+	}
 }
 
 func (l *LeaveDomainService) CreateLeave(leave *entity.Leave, leaderMaxLevel int, approver approver.Approver) {

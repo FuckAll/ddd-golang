@@ -14,22 +14,27 @@ type LeaveRepositoryImpl struct {
 	//LeaveEventDao leaveEventDao;
 }
 
-func (l *LeaveRepositoryImpl) Save(LeavePO po.LeavePO) {
-	panic("implement me")
+func (l *LeaveRepositoryImpl) Save(LeavePO *po.LeavePO) error {
+	return nil
+
 }
 
-func (l *LeaveRepositoryImpl) SaveEvent(leaveEventPO po.LeaveEventPO) {
-	panic("implement me")
+func (l *LeaveRepositoryImpl) SaveEvent(leaveEventPO *po.LeaveEventPO) error {
+	return nil
 }
 
-func (l *LeaveRepositoryImpl) findById(id string) po.LeavePO {
-	panic("implement me")
+func (l *LeaveRepositoryImpl) FindById(id string) (*po.LeavePO, error) {
+	return nil, nil
 }
 
-func (l *LeaveRepositoryImpl) queryByApplicantId(applicantId string) []po.LeavePO {
-	panic("implement me")
+func (l *LeaveRepositoryImpl) QueryByApplicantId(applicantId string) ([]*po.LeavePO, error) {
+	return nil, nil
 }
 
-func (l *LeaveRepositoryImpl) queryByApproverId(approverId string) []po.LeavePO {
-	panic("implement me")
+func (l *LeaveRepositoryImpl) QueryByApproverId(approverId string) ([]*po.LeavePO, error) {
+	return nil, nil
+}
+
+func NewLeaveRepositoryImpl() *LeaveRepositoryImpl {
+	return &LeaveRepositoryImpl{}
 }

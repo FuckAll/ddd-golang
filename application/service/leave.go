@@ -9,9 +9,18 @@ import (
 )
 
 type LeaveApplicationService struct {
-	leaveDomainService        leaveService.LeaveDomainService
-	personDomainService       personService.PersonDomainService
-	approvalRuleDomainService ruleService.ApprovalRuleDomainService
+	leaveDomainService        *leaveService.LeaveDomainService
+	personDomainService       *personService.PersonDomainService
+	approvalRuleDomainService *ruleService.ApprovalRuleDomainService
+}
+
+// NewLeaveApplicationService 创建service
+func NewLeaveApplicationService(leave *leaveService.LeaveDomainService, person *personService.PersonDomainService, rule *ruleService.ApprovalRuleDomainService) *LeaveApplicationService {
+	return &LeaveApplicationService{
+		leaveDomainService:        leave,
+		personDomainService:       person,
+		approvalRuleDomainService: rule,
+	}
 }
 
 // CreateLeaveInfo 创建请假申请，并为审批人生成人物

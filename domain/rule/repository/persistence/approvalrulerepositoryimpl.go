@@ -7,6 +7,11 @@ type ApprovalRuleRepositoryImpl struct {
 
 }
 
-func (a ApprovalRuleRepositoryImpl) getLeaderMaxLevel(rule entity.ApprovalRule) int {
-	panic("implement me")
+func (a *ApprovalRuleRepositoryImpl) GetLeaderMaxLevel(rule *entity.ApprovalRule) (int, error) {
+	return 0, nil
+}
+
+func NewApprovalRuleRepositoryImpl() *ApprovalRuleRepositoryImpl {
+	return &ApprovalRuleRepositoryImpl{}
+
 }

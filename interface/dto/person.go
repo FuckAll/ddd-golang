@@ -1,11 +1,11 @@
 package dto
 
 type PersonDTO struct {
-	personId       string
-	personName     string
-	roleId         string
-	personType     string
-	createTime     string
-	lastModifyTime string
-	status         string
+	PersonId       string
+	PersonName     string
+	RoleId         string
+	PersonType     int
+	CreateTime     string
+	LastModifyTime string
+	Status         int
 }
