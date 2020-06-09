@@ -58,10 +58,13 @@ var (
 
 var _ facade2.ILeaveRepository = &persistence.LeaveRepositoryImpl{}
 
-var leaveAPISet = wire.NewSet(service2.NewLeaveDomainService, service3.NewPersonDomainService, service4.NewApprovalRuleDomainService)
+// NewLeaveApplicationService 所需依赖
+var leaveApplicationServiceSet = wire.NewSet(service2.NewLeaveDomainService, service3.NewPersonDomainService, service4.NewApprovalRuleDomainService)
 
+// LeaveDomainService 所需依赖
 var leaveDomainServiceSet = wire.NewSet(event.NewEventPublisher, wire.Bind(new(facade2.ILeaveRepository), new(*persistence.LeaveRepositoryImpl)), persistence.NewLeaveRepositoryImpl, service2.NewLeaveFactory)
 
+// PersonDomainService 所需依赖
 var personDomainServiceSet = wire.NewSet(wire.Bind(new(facade3.PersonRepository), new(*persistence2.PersonRepositoryImpl)), persistence2.NewPersonRepositoryImpl, service3.NewPersonFactory)
 
 var approvalRuleDomainServiceSet = wire.NewSet(wire.Bind(new(facade4.ApprovalRuleRepository), new(*persistence3.ApprovalRuleRepositoryImpl)), persistence3.NewApprovalRuleRepositoryImpl)

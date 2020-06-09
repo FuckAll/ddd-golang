@@ -25,12 +25,37 @@ func InitAuthApi() *facade.AuthApi {
 
 var _ leaveRepositoryFacade.ILeaveRepository = &leavePersistence.LeaveRepositoryImpl{}
 
-var leaveAPISet = wire.NewSet(leaveDomainService.NewLeaveDomainService, personDomainService.NewPersonDomainService, ruleDomainService.NewApprovalRuleDomainService)
-var leaveDomainServiceSet = wire.NewSet(event.NewEventPublisher, wire.Bind(new(leaveRepositoryFacade.ILeaveRepository), new(*leavePersistence.LeaveRepositoryImpl)), leavePersistence.NewLeaveRepositoryImpl, leaveDomainService.NewLeaveFactory)
-var personDomainServiceSet = wire.NewSet(wire.Bind(new(personRepositoryFacade.PersonRepository), new(*personPersistence.PersonRepositoryImpl)), personPersistence.NewPersonRepositoryImpl, personDomainService.NewPersonFactory)
-var approvalRuleDomainServiceSet = wire.NewSet(wire.Bind(new(ruleRepositoryFacade.ApprovalRuleRepository), new(*rulePersistence.ApprovalRuleRepositoryImpl)), rulePersistence.NewApprovalRuleRepositoryImpl)
+// NewLeaveApplicationService 所需依赖
+var leaveApplicationServiceSet = wire.NewSet(
+	leaveDomainService.NewLeaveDomainService,
+	personDomainService.NewPersonDomainService,
+	ruleDomainService.NewApprovalRuleDomainService)
+
+// LeaveDomainService 所需依赖
+var leaveDomainServiceSet = wire.NewSet(
+	event.NewEventPublisher,
+	wire.Bind(new(leaveRepositoryFacade.ILeaveRepository), new(*leavePersistence.LeaveRepositoryImpl)), // 注入interface方法要用Bind
+	leavePersistence.NewLeaveRepositoryImpl, // 需要注入interface的实现类
+	leaveDomainService.NewLeaveFactory)
+
+// PersonDomainService 所需依赖
+var personDomainServiceSet = wire.NewSet(
+	wire.Bind(new(personRepositoryFacade.PersonRepository), new(*personPersistence.PersonRepositoryImpl)),
+	personPersistence.NewPersonRepositoryImpl,
+	personDomainService.NewPersonFactory)
+
+var approvalRuleDomainServiceSet = wire.NewSet(
+	wire.Bind(new(ruleRepositoryFacade.ApprovalRuleRepository), new(*rulePersistence.ApprovalRuleRepositoryImpl)),
+	rulePersistence.NewApprovalRuleRepositoryImpl)
 
 func InitLeaveAPI() *facade.LeaveAPI {
-	wire.Build(facade.NewLeaveAPI, wire.Value(DefaultEngine), service.NewLeaveApplicationService, leaveAPISet, leaveDomainServiceSet, personDomainServiceSet, approvalRuleDomainServiceSet)
+	wire.Build(
+		facade.NewLeaveAPI,
+		wire.Value(DefaultEngine),
+		service.NewLeaveApplicationService,
+		leaveApplicationServiceSet,
+		leaveDomainServiceSet,
+		personDomainServiceSet,
+		approvalRuleDomainServiceSet)
 	return &facade.LeaveAPI{}
 }
